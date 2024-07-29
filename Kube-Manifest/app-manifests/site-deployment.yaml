@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: site-deployment
+spec:
+  selector:
+    matchLabels:
+      app: site-deployment
+  template:
+    metadata:
+      labels:
+        app: site-deployment
+    spec:
+      containers:
+      - name: ecom-site
+        image: mrace17/ecom-web:v1
+        resources:
+          
+
+        env:
+          - name: DB_HOST
+            valueFrom:
+              configMapKeyRef:
+                key: DB_HOST
+                name: site-configmap
+          - name: DB_USER
+            valueFrom:
+              configMapKeyRef:
+                key: DB_USER
+                name: site-configmap
+          - name: DB_NAME
+            valueFrom:
+              configMapKeyRef:
+                key: DB_NAME
+                name: site-configmap
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: password
+                name: site-secret
+
+        ports:
+        - containerPort: 80
