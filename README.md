@@ -1,4 +1,4 @@
-# [The Kubernetes Resume Challenge](your-project-link)
+# [The Kubernetes Ecommerce Site Challenge](your-project-link)
 
 ## Project Summary
 
