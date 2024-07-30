@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.site.service.name }}
+spec:
+  type: {{ .Values.site.service.type }}
+  selector:
+    {{- toYaml .Values.site.labels | nindent 4 }}
+  ports:
+  - port: {{ .Values.site.service.port }}
+    protocol: TCP
+    targetPort: 80
